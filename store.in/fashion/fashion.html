@@ -33,23 +33,23 @@
             overflow-x: hidden;
         }
 
-        /* COMPACT Top Header */
+        /* COMPACT Top Header - UPDATED DIMENSIONS */
         .top-header {
             background: var(--primary);
-            padding: 0.3rem 1.2rem; /* Reduced padding */
+            padding: 0.5rem 1.5rem; /* UPDATED: Vertical 0.5rem, Horizontal 1.5rem */
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: fixed;
-            width: 100%;
+            width: 100%; /* UPDATED: Full viewport width */
             top: 0;
             z-index: 1000;
             border-bottom: 1px solid var(--glass-border);
-            height: 44px; /* Reduced height */
+            height: 50px; /* UPDATED: Height 50px */
         }
 
         .logo {
-            font-size: 1.4rem; /* Reduced from 1.6rem */
+            font-size: 1.4rem;
             font-weight: 800;
             color: var(--text);
             text-decoration: none;
@@ -61,7 +61,7 @@
 
         .header-icons {
             display: flex;
-            gap: 0.6rem; /* Reduced gap */
+            gap: 0.6rem;
             align-items: center;
         }
 
@@ -70,14 +70,14 @@
             background: var(--glass);
             backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border);
-            border-radius: 16px; /* Slightly smaller radius */
-            padding: 0.2rem 0.8rem; /* Reduced padding */
+            border-radius: 16px;
+            padding: 0.2rem 0.8rem;
             display: flex;
             align-items: center;
-            gap: 0.4rem; /* Reduced gap */
-            width: 4cm; /* Reduced width */
+            gap: 0.4rem;
+            width: 4cm;
             min-width: 4cm;
-            height: 28px; /* Reduced height */
+            height: 28px;
             transition: all 0.3s ease;
             cursor: pointer;
         }
@@ -96,7 +96,7 @@
             background: transparent;
             border: none;
             color: var(--text);
-            font-size: 0.8rem; /* Reduced font size */
+            font-size: 0.8rem;
             width: 100%;
             outline: none;
             padding: 0;
@@ -105,12 +105,12 @@
 
         .search-bar input::placeholder {
             color: rgba(255, 255, 255, 0.6);
-            font-size: 0.8rem; /* Reduced font size */
+            font-size: 0.8rem;
         }
 
         .search-icon {
             color: rgba(255, 255, 255, 0.7);
-            font-size: 0.8rem; /* Reduced font size */
+            font-size: 0.8rem;
             transition: color 0.3s ease;
         }
 
@@ -123,7 +123,7 @@
             background: var(--glass);
             border: 1px solid var(--glass-border);
             border-radius: 50%;
-            width: 28px; /* Reduced size */
+            width: 28px;
             height: 28px;
             display: flex;
             align-items: center;
@@ -131,7 +131,7 @@
             color: var(--text);
             text-decoration: none;
             transition: all 0.3s ease;
-            font-size: 0.75rem; /* Reduced font size */
+            font-size: 0.75rem;
             position: relative;
         }
 
@@ -142,23 +142,23 @@
 
         .cart-badge {
             position: absolute;
-            top: -3px; /* Adjusted position */
+            top: -3px;
             right: -3px;
             background: var(--accent);
             color: white;
             border-radius: 50%;
-            width: 14px; /* Reduced size */
+            width: 14px;
             height: 14px;
-            font-size: 0.6rem; /* Reduced font size */
+            font-size: 0.6rem;
             display: none;
             align-items: center;
             justify-content: center;
             font-weight: 600;
         }
 
-        /* Main Content - Adjusted for smaller header */
+        /* Main Content - Adjusted for header height */
         .main-content {
-            margin-top: 44px; /* Adjusted for smaller header */
+            margin-top: 50px; /* UPDATED: Adjusted for 50px header */
             padding: 1rem;
             background: var(--primary);
             min-height: calc(100vh - 150px);
@@ -661,10 +661,10 @@
             transform: scale(1.03);
         }
 
-        /* Success Message - Adjusted for smaller header */
+        /* Success Message - Adjusted for header height */
         .success-message {
             position: fixed;
-            top: 54px; /* Adjusted for smaller header */
+            top: 60px; /* UPDATED: Adjusted for 50px header */
             right: 2rem;
             background: var(--success);
             color: white;
@@ -793,34 +793,34 @@
         }
 
         @media (max-width: 768px) {
-            /* Mobile Header - Compact */
+            /* Mobile Header - UPDATED DIMENSIONS */
             .top-header {
-                padding: 0.25rem 1rem; /* Further reduced padding */
-                height: 40px; /* Smaller height on mobile */
+                padding: 0.5rem 1rem; /* UPDATED: Vertical 0.5rem, Horizontal 1rem */
+                height: 45px; /* UPDATED: Height 45px */
             }
 
             .logo {
-                font-size: 1.3rem; /* Further reduced for mobile */
+                font-size: 1.3rem;
             }
 
             .main-content {
-                margin-top: 40px; /* Adjusted for smaller header */
+                margin-top: 45px; /* UPDATED: Adjusted for 45px header */
                 padding: 0.8rem;
             }
 
             .search-bar {
-                width: 3.2cm; /* Reduced width for mobile */
+                width: 3.2cm;
                 min-width: 3.2cm;
-                height: 26px; /* Further reduced for mobile */
-                padding: 0.15rem 0.7rem; /* Reduced padding */
+                height: 26px;
+                padding: 0.15rem 0.7rem;
             }
 
             .search-bar input, .search-bar input::placeholder {
-                font-size: 0.75rem; /* Smaller font on mobile */
+                font-size: 0.75rem;
             }
 
             .search-icon {
-                font-size: 0.75rem; /* Smaller icon on mobile */
+                font-size: 0.75rem;
             }
 
             .hero-section {
@@ -885,12 +885,12 @@
             .nav-icon { font-size: 1.3rem; height: 22px; }
             .nav-label { font-size: 0.65rem; }
             .icon-btn {
-                width: 26px; /* Further reduced for mobile */
+                width: 26px;
                 height: 26px;
-                font-size: 0.7rem; /* Smaller icons */
+                font-size: 0.7rem;
             }
             .success-message {
-                top: 50px; /* Adjusted for smaller header */
+                top: 55px; /* UPDATED: Adjusted for 45px header */
                 right: 1rem;
                 left: 1rem;
                 text-align: center;
@@ -938,8 +938,8 @@
             .nav-label { font-size: 0.6rem; }
             
             .top-header {
-                padding: 0.2rem 0.8rem;
-                height: 38px;
+                padding: 0.5rem 0.8rem; /* UPDATED: Maintained vertical padding */
+                height: 45px; /* UPDATED: Maintained height */
             }
             
             .logo {
@@ -956,7 +956,7 @@
 
         @media (min-width: 1200px) {
             .search-bar {
-                width: 4.5cm; /* Slightly reduced for desktop */
+                width: 4.5cm;
                 min-width: 4.5cm;
             }
         }
@@ -974,7 +974,7 @@
     </style>
 </head>
 <body>
-    <!-- Compact Top Header -->
+    <!-- Compact Top Header with Updated Dimensions -->
     <header class="top-header">
         <a href="/store.in/fashion/fashion.html" class="logo">store<span class="logo-dot">.</span>in</a>
         <div class="header-icons">
@@ -1029,35 +1029,35 @@
                     
                     <div class="slider">
                         <!-- Product 1 - Peter England -->
-                        <div class="product-card" onclick="navigateToBrand('/store.in/featured/1.html')">
+                        <div class="product-card" onclick="navigateToBrand('store.in/featured/1.html')">
                             <div class="product-image">
                                 <img src="/store.in/fashion/image/peterengland.jpeg.jpg" alt="Peter England">
                             </div>
                         </div>
 
                         <!-- Product 2 - Armani -->
-                        <div class="product-card" onclick="navigateToBrand('/store.in/featured/2.html')">
+                        <div class="product-card" onclick="navigateToBrand('store.in/featured/2.html')">
                             <div class="product-image">
                                 <img src="/store.in/fashion/image/armaani.jpg" alt="Armani">
                             </div>
                         </div>
                         
                         <!-- Product 3 - Adidas -->
-                        <div class="product-card" onclick="navigateToBrand('/store.in/featured/3.html')">
+                        <div class="product-card" onclick="navigateToBrand('store.in/featured/3.html')">
                             <div class="product-image">
                                 <img src="/store.in/fashion/image/adidas.jpeg.jpg" alt="Adidas">
                             </div>
                         </div>
 
                         <!-- Product 4 - H&M -->
-                        <div class="product-card" onclick="navigateToBrand('/store.in/featured/4.html')">
+                        <div class="product-card" onclick="navigateToBrand('store.in/featured/4.html')">
                             <div class="product-image">
                                 <img src="/store.in/fashion/image/h&m.jpeg.jpg" alt="H&M">
                             </div>
                         </div>
 
                         <!-- Product 5 - Nike -->
-                        <div class="product-card" onclick="navigateToBrand('/store.in/featured/5.html')">
+                        <div class="product-card" onclick="navigateToBrand('store.in/featured/5.html')">
                             <div class="product-image">
                                 <img src="/store.in/fashion/image/nike.jpeg.jpg" alt="Nike">
                             </div>
@@ -1083,43 +1083,43 @@
                 <!-- First Line of Categories - 10 Products (Men's) -->
                <div class="scroll-container">
         <div class="category-card" onclick="navigateToCategory('menshirts.html')">
-            <img src="/store.in/fashion/image/shirt.jpeg.jpg" alt="Shirts" class="category-image">
+            <img src="store.in/fashion/image/shirt.jpeg.jpg" alt="Shirts" class="category-image">
             <div class="category-label">Shirts</div>
         </div>
         <div class="category-card" onclick="navigateToCategory('ment-shirts.html')">
-            <img src="/store.in/fashion/image/T-shirt.jpeg.jpg" alt="T-Shirts" class="category-image">
+            <img src="store.in/fashion/image/T-shirt.jpeg.jpg" alt="T-Shirts" class="category-image">
             <div class="category-label">T-Shirts</div>
         </div>
         <div class="category-card" onclick="navigateToCategory('menpants.html')">
-            <img src="/store.in/fashion/image/T-shirt.jpeg.jpg" alt="Jeans" class="category-image">
+            <img src="store.in/fashion/image/T-shirt.jpeg.jpg" alt="Jeans" class="category-image">
             <div class="category-label">Jeans</div>
         </div>
         <div class="category-card" onclick="navigateToCategory('menshoes.html')">
-            <img src="/store.in/fashion/image/manshoes.jpeg.jpg" alt="Casual Shoes" class="category-image">
+            <img src="store.in/fashion/image/manshoes.jpeg.jpg" alt="Casual Shoes" class="category-image">
             <div class="category-label">Casual Shoes</div>
         </div>
         <div class="category-card" onclick="navigateToCategory('menwatches.html')">
-            <img src="/store.in/fashion/image/menwatch.jpeg.jpg" alt="Watches" class="category-image">
+            <img src="store.in/fashion/image/menwatch.jpeg.jpg" alt="Watches" class="category-image">
             <div class="category-label">Watches</div>
         </div>
         <div class="category-card" onclick="navigateToCategory('menjackets.html')">
-            <img src="/store.in/fashion/image/menjacket.jpeg.jpg" alt="Jackets" class="category-image">
+            <img src="store.in/fashion/image/menjacket.jpeg.jpg" alt="Jackets" class="category-image">
             <div class="category-label">Jackets</div>
         </div>
         <div class="category-card" onclick="navigateToCategory('mensunglasses.html')">
-            <img src="/store.in/fashion/image/sunglass.jpeg.jpg" alt="Sunglasses" class="category-image">
+            <img src="store.in/fashion/image/sunglass.jpeg.jpg" alt="Sunglasses" class="category-image">
             <div class="category-label">Sunglasses</div>
         </div>
         <div class="category-card" onclick="navigateToCategory('menfragrances.html')">
-            <img src="/store.in/fashion/image/menperfuem.jpeg.jpg" alt="Perfume" class="category-image">
+            <img src="store.in/fashion/image/menperfuem.jpeg.jpg" alt="Perfume" class="category-image">
             <div class="category-label">Perfume</div>
         </div>
         <div class="category-card" onclick="navigateToCategory('menwallets.html')">
-            <img src="/store.in/fashion/image/wallet.jpeg.jpg" alt="Wallets" class="category-image">
+            <img src="store.in/fashion/image/wallet.jpeg.jpg" alt="Wallets" class="category-image">
             <div class="category-label">Wallets</div>
         </div>
         <div class="category-card" onclick="navigateToCategory('menslippers.html')">
-            <img src="/store.in/fashion/image/sandals.jpeg.jpg" alt="sandals" class="category-image">
+            <img src="store.in/fashion/image/sandals.jpeg.jpg" alt="sandals" class="category-image">
             <div class="category-label">Sandals</div>
         </div>
     </div>
@@ -1127,43 +1127,43 @@
                 <!-- Second Line of Categories - 10 Products (Women's) -->
                  <div class="scroll-container">
         <div class="category-card" onclick="navigateToCategory('womenparty-styles.html')">
-            <img src="/store.in/fashion/image/partydress.jpeg.jpg" alt="Party Dress" class="category-image">
+            <img src="store.in/fashion/image/partydress.jpeg.jpg" alt="Party Dress" class="category-image">
             <div class="category-label">Party Dress</div>
         </div>
         <div class="category-card" onclick="navigateToCategory('womentraditional.html')">
-            <img src="/store.in/fashion/image/traditional.jpeg.jpg" alt="Traditional" class="category-image">
+            <img src="store.in/fashion/image/traditional.jpeg.jpg" alt="Traditional" class="category-image">
             <div class="category-label">Traditional</div>
         </div>
         <div class="category-card" onclick="navigateToCategory('womenkurtas.html')">
-            <img src="/store.in/fashion/image/kurtas.jpeg.jpg" alt="Kurtas" class="category-image">
+            <img src="store.in/fashion/image/kurtas.jpeg.jpg" alt="Kurtas" class="category-image">
             <div class="category-label">Kurtas</div>
         </div>
         <div class="category-card" onclick="navigateToCategory('womensaree.html')">
-            <img src="/store.in/fashion/image/womensaree.jpeg.jpg" alt="Sarees" class="category-image">
+            <img src="store.in/fashion/image/womensaree.jpeg.jpg" alt="Sarees" class="category-image">
             <div class="category-label">Sarees</div>
         </div>
         <div class="category-card" onclick="navigateToCategory('womenjewellery.html')">
-            <img src="/store.in/fashion/image/jewellery.jpeg.jpg" alt="Jewellery" class="category-image">
+            <img src="store.in/fashion/image/jewellery.jpeg.jpg" alt="Jewellery" class="category-image">
             <div class="category-label">Jewellery</div>
         </div>
         <div class="category-card" onclick="navigateToCategory('womenfragrances.html')">
-            <img src="/store.in/fashion/image/womenfragrance.jpeg.jpg" alt="Fragrance" class="category-image">
+            <img src="store.in/fashion/image/womenfragrance.jpeg.jpg" alt="Fragrance" class="category-image">
             <div class="category-label">Fragrance</div>
         </div>
         <div class="category-card" onclick="navigateToCategory('womenwatch.html')">
-            <img src="/store.in/fashion/image/womenfragrance.jpeg.jpg" alt="Watches" class="category-image">
+            <img src="store.in/fashion/image/womenfragrance.jpeg.jpg" alt="Watches" class="category-image">
             <div class="category-label">Watches</div>
         </div>
         <div class="category-card" onclick="navigateToCategory('womenwallets.html')">
-            <img src="/store.in/fashion/image/womenhandbag.jpeg.jpg" alt="Handbags" class="category-image">
+            <img src="store.in/fashion/image/womenhandbag.jpeg.jpg" alt="Handbags" class="category-image">
             <div class="category-label">Handbags</div>
         </div>
         <div class="category-card" onclick="navigateToCategory('womenheels.html')">
-            <img src="/store.in/fashion/image/heel.jpeg.jpg" alt="heels" class="category-image">
+            <img src="store.in/fashion/image/heel.jpeg.jpg" alt="heels" class="category-image">
             <div class="category-label">Heels</div>
         </div>
         <div class="category-card" onclick="navigateToCategory('womenmakeup.html')">
-            <img src="/store.in/fashion/image/makeups.jpeg" alt="Makeup" class="category-image">
+            <img src="store.in/fashion/image/makeups.jpeg" alt="Makeup" class="category-image">
             <div class="category-label">Makeup</div>
         </div>
     </div>
@@ -1175,47 +1175,47 @@
                 <h2 class="luxury-brands-title">LUXURY BRANDS</h2>
                 <div class="brands-slider">
                     <!-- Luxury brand logos -->
-            <div class="brand-slide"><img src="/store.in/fashion/image/brand1.png.jpg" alt="Louis Vuitton"></div>
-            <div class="brand-slide"><img src="/store.in/fashion/image/brand2.png.jpg" alt="Gucci"></div>
-            <div class="brand-slide"><img src="/store.in/fashion/image/brand3.png.jpg" alt="Chanel"></div>
-            <div class="brand-slide"><img src="/store.in/fashion/image/brand4.png.jpg" alt="Prada"></div>
-            <div class="brand-slide"><img src="/store.in/fashion/image/brand5.png.jpg" alt="Dior"></div>
-            <div class="brand-slide"><img src="/store.in/fashion/image/brand6.png.jpg" alt="Hermes"></div>
-            <div class="brand-slide"><img src="/store.in/fashion/image/brand7.png.jpg" alt="Balenciaga"></div>
-            <div class="brand-slide"><img src="/store.in/fashion/image/brand8.png.jpg" alt="Yves Saint Laurent"></div>
-            <div class="brand-slide"><img src="/store.in/fashion/image/brand9.png.jpg" alt="Bvlgari"></div>
-            <div class="brand-slide"><img src="/store.in/fashion/image/brand10.png.jpg" alt="Cartier"></div>
-            <div class="brand-slide"><img src="/store.in/fashion/image/brand11.png.jpg" alt="Valentino"></div>
-            <div class="brand-slide"><img src="/store.in/fashion/image/brand12.png.jpg" alt="Fendi"></div>
-            <div class="brand-slide"><img src="/store.in/fashion/image/brand13.png.jpg" alt="Bottega Veneta"></div>
-            <div class="brand-slide"><img src="/store.in/fashion/image/brand14.png.jpg" alt="Balmain"></div>
-            <div class="brand-slide"><img src="/store.in/fashion/image/brand15.png.jpg" alt="Givenchy"></div>
-            <div class="brand-slide"><img src="/store.in/fashion/image/brand16.png.jpg" alt="Versace"></div>
-            <div class="brand-slide"><img src="/store.in/fashion/image/brand17.png.jpg" alt="Burberry"></div>
-            <div class="brand-slide"><img src="/store.in/fashion/image/brand18.png.jpg" alt="Miu Miu"></div>
-            <div class="brand-slide"><img src="/store.in/fashion/image/brand19.png.jpg" alt="Salvatore Ferragamo"></div>
-            <div class="brand-slide"><img src="/store.in/fashion/image/brand20.png.jpg" alt="Tommy Hilfiger"></div>
+            <div class="brand-slide"><img src="store.in/fashion/image/brand1.png.jpg" alt="Louis Vuitton"></div>
+            <div class="brand-slide"><img src="store.in/fashion/image/brand2.png.jpg" alt="Gucci"></div>
+            <div class="brand-slide"><img src="store.in/fashion/image/brand3.png.jpg" alt="Chanel"></div>
+            <div class="brand-slide"><img src="store.in/fashion/image/brand4.png.jpg" alt="Prada"></div>
+            <div class="brand-slide"><img src="store.in/fashion/image/brand5.png.jpg" alt="Dior"></div>
+            <div class="brand-slide"><img src="store.in/fashion/image/brand6.png.jpg" alt="Hermes"></div>
+            <div class="brand-slide"><img src="store.in/fashion/image/brand7.png.jpg" alt="Balenciaga"></div>
+            <div class="brand-slide"><img src="store.in/fashion/image/brand8.png.jpg" alt="Yves Saint Laurent"></div>
+            <div class="brand-slide"><img src="store.in/fashion/image/brand9.png.jpg" alt="Bvlgari"></div>
+            <div class="brand-slide"><img src="store.in/fashion/image/brand10.png.jpg" alt="Cartier"></div>
+            <div class="brand-slide"><img src="store.in/fashion/image/brand11.png.jpg" alt="Valentino"></div>
+            <div class="brand-slide"><img src="store.in/fashion/image/brand12.png.jpg" alt="Fendi"></div>
+            <div class="brand-slide"><img src="store.in/fashion/image/brand13.png.jpg" alt="Bottega Veneta"></div>
+            <div class="brand-slide"><img src="store.in/fashion/image/brand14.png.jpg" alt="Balmain"></div>
+            <div class="brand-slide"><img src="store.in/fashion/image/brand15.png.jpg" alt="Givenchy"></div>
+            <div class="brand-slide"><img src="store.in/fashion/image/brand16.png.jpg" alt="Versace"></div>
+            <div class="brand-slide"><img src="store.in/fashion/image/brand17.png.jpg" alt="Burberry"></div>
+            <div class="brand-slide"><img src="store.in/fashion/image/brand18.png.jpg" alt="Miu Miu"></div>
+            <div class="brand-slide"><img src="store.in/fashion/image/brand19.png.jpg" alt="Salvatore Ferragamo"></div>
+            <div class="brand-slide"><img src="store.in/fashion/image/brand20.png.jpg" alt="Tommy Hilfiger"></div>
                     <!-- Duplicate for smooth infinite scroll -->
-            <div class="brand-slide"><img src="/store.in/fashion/image/brand1.png.jpg" alt="Louis Vuitton"></div>
-            <div class="brand-slide"><img src="/store.in/fashion/image/brand2.png.jpg" alt="Gucci"></div>
-            <div class="brand-slide"><img src="/store.in/fashion/image/brand3.png.jpg" alt="Chanel"></div>
-            <div class="brand-slide"><img src="/store.in/fashion/image/brand4.png.jpg" alt="Prada"></div>
-            <div class="brand-slide"><img src="/store.in/fashion/image/brand5.png.jpg" alt="Dior"></div>
-            <div class="brand-slide"><img src="/store.in/fashion/image/brand6.png.jpg" alt="Hermes"></div>
-            <div class="brand-slide"><img src="/store.in/fashion/image/brand7.png.jpg" alt="Balenciaga"></div>
-            <div class="brand-slide"><img src="/store.in/fashion/image/brand8.png.jpg" alt="Yves Saint Laurent"></div>
-            <div class="brand-slide"><img src="/store.in/fashion/image/brand9.png.jpg" alt="Bvlgari"></div>
-            <div class="brand-slide"><img src="/store.in/fashion/image/brand10.png.jpg" alt="Cartier"></div>
-            <div class="brand-slide"><img src="/store.in/fashion/image/brand11.png.jpg" alt="Valentino"></div>
-            <div class="brand-slide"><img src="/store.in/fashion/image/brand12.png.jpg" alt="Fendi"></div>
-            <div class="brand-slide"><img src="/store.in/fashion/image/brand13.png.jpg" alt="Bottega Veneta"></div>
-            <div class="brand-slide"><img src="/store.in/fashion/image/brand14.png.jpg" alt="Balmain"></div>
-            <div class="brand-slide"><img src="/store.in/fashion/image/brand15.png.jpg" alt="Givenchy"></div>
-            <div class="brand-slide"><img src="/store.in/fashion/image/brand16.png.jpg" alt="Versace"></div>
-            <div class="brand-slide"><img src="/store.in/fashion/image/brand17.png.jpg" alt="Burberry"></div>
-            <div class="brand-slide"><img src="/store.in/fashion/image/brand18.png.jpg" alt="Miu Miu"></div>
-            <div class="brand-slide"><img src="/store.in/fashion/image/brand19.png.jpg" alt="Salvatore Ferragamo"></div>
-            <div class="brand-slide"><img src="/store.in/fashion/image/brand20.png.jpg" alt="Tommy Hilfiger"></div>
+            <div class="brand-slide"><img src="store.in/fashion/image/brand1.png.jpg" alt="Louis Vuitton"></div>
+            <div class="brand-slide"><img src="store.in/fashion/image/brand2.png.jpg" alt="Gucci"></div>
+            <div class="brand-slide"><img src="store.in/fashion/image/brand3.png.jpg" alt="Chanel"></div>
+            <div class="brand-slide"><img src="store.in/fashion/image/brand4.png.jpg" alt="Prada"></div>
+            <div class="brand-slide"><img src="store.in/fashion/image/brand5.png.jpg" alt="Dior"></div>
+            <div class="brand-slide"><img src="store.in/fashion/image/brand6.png.jpg" alt="Hermes"></div>
+            <div class="brand-slide"><img src="store.in/fashion/image/brand7.png.jpg" alt="Balenciaga"></div>
+            <div class="brand-slide"><img src="store.in/fashion/image/brand8.png.jpg" alt="Yves Saint Laurent"></div>
+            <div class="brand-slide"><img src="store.in/fashion/image/brand9.png.jpg" alt="Bvlgari"></div>
+            <div class="brand-slide"><img src="store.in/fashion/image/brand10.png.jpg" alt="Cartier"></div>
+            <div class="brand-slide"><img src="store.in/fashion/image/brand11.png.jpg" alt="Valentino"></div>
+            <div class="brand-slide"><img src="store.in/fashion/image/brand12.png.jpg" alt="Fendi"></div>
+            <div class="brand-slide"><img src="store.in/fashion/image/brand13.png.jpg" alt="Bottega Veneta"></div>
+            <div class="brand-slide"><img src="store.in/fashion/image/brand14.png.jpg" alt="Balmain"></div>
+            <div class="brand-slide"><img src="store.in/fashion/image/brand15.png.jpg" alt="Givenchy"></div>
+            <div class="brand-slide"><img src="store.in/fashion/image/brand16.png.jpg" alt="Versace"></div>
+            <div class="brand-slide"><img src="store.in/fashion/image/brand17.png.jpg" alt="Burberry"></div>
+            <div class="brand-slide"><img src="store.in/fashion/image/brand18.png.jpg" alt="Miu Miu"></div>
+            <div class="brand-slide"><img src="store.in/fashion/image/brand19.png.jpg" alt="Salvatore Ferragamo"></div>
+            <div class="brand-slide"><img src="store.in/fashion/image/brand20.png.jpg" alt="Tommy Hilfiger"></div>
             </section>
 
             <!-- Exclusive Collection Section -->
@@ -1350,23 +1350,23 @@
 
     <!-- Floating Navigation -->
     <nav class="floating-nav">
-        <a href="/store.in/fashion/fashion.html" class="nav-item active">
+        <a href="store.in/fashion/fashion.html" class="nav-item active">
             <i class="fas fa-home nav-icon"></i>
             <span class="nav-label">Home</span>
         </a>
-        <a href="/store.in/fashion/men/men.html" class="nav-item">
+        <a href="store.in/fashion/men/men.html" class="nav-item">
             <i class="fas fa-male nav-icon"></i>
             <span class="nav-label">Men</span>
         </a>
-        <a href="/store.in/fashion/women/women.html" class="nav-item">
+        <a href="store.in/fashion/women/women.html" class="nav-item">
             <i class="fas fa-female nav-icon"></i>
             <span class="nav-label">Women</span>
         </a>
-        <a href="/store.in/fashion/kid/kids.html" class="nav-item">
+        <a href="store.in/fashion/kid/kids.html" class="nav-item">
             <i class="fas fa-child nav-icon"></i>
             <span class="nav-label">Kids</span>
         </a>
-        <a href="/store.in/fashion/track/track.html" class="nav-item">
+        <a href="store.in/fashion/track/track.html" class="nav-item">
             <i class="fas fa-map-marker-alt nav-icon"></i>
             <span class="nav-label">Track</span>
         </a>
@@ -1595,7 +1595,7 @@
 
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', function() {
-            setActiveNav();
+            setActiveNav(); 
             updateCartBadge();
         });
     </script>
