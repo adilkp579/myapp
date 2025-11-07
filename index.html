@@ -33,23 +33,23 @@
             overflow-x: hidden;
         }
 
-        /* COMPACT Top Header */
+        /* COMPACT Top Header - UPDATED DIMENSIONS */
         .top-header {
             background: var(--primary);
-            padding: 0.3rem 1.2rem; /* Reduced padding */
+            padding: 0.5rem 1.5rem; /* UPDATED: Vertical 0.5rem, Horizontal 1.5rem */
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: fixed;
-            width: 100%;
+            width: 100%; /* UPDATED: Full viewport width */
             top: 0;
             z-index: 1000;
             border-bottom: 1px solid var(--glass-border);
-            height: 44px; /* Reduced height */
+            height: 50px; /* UPDATED: Height 50px */
         }
 
         .logo {
-            font-size: 1.4rem; /* Reduced from 1.6rem */
+            font-size: 1.4rem;
             font-weight: 800;
             color: var(--text);
             text-decoration: none;
@@ -61,7 +61,7 @@
 
         .header-icons {
             display: flex;
-            gap: 0.6rem; /* Reduced gap */
+            gap: 0.6rem;
             align-items: center;
         }
 
@@ -70,14 +70,14 @@
             background: var(--glass);
             backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border);
-            border-radius: 16px; /* Slightly smaller radius */
-            padding: 0.2rem 0.8rem; /* Reduced padding */
+            border-radius: 16px;
+            padding: 0.2rem 0.8rem;
             display: flex;
             align-items: center;
-            gap: 0.4rem; /* Reduced gap */
-            width: 4cm; /* Reduced width */
+            gap: 0.4rem;
+            width: 4cm;
             min-width: 4cm;
-            height: 28px; /* Reduced height */
+            height: 28px;
             transition: all 0.3s ease;
             cursor: pointer;
         }
@@ -96,7 +96,7 @@
             background: transparent;
             border: none;
             color: var(--text);
-            font-size: 0.8rem; /* Reduced font size */
+            font-size: 0.8rem;
             width: 100%;
             outline: none;
             padding: 0;
@@ -105,12 +105,12 @@
 
         .search-bar input::placeholder {
             color: rgba(255, 255, 255, 0.6);
-            font-size: 0.8rem; /* Reduced font size */
+            font-size: 0.8rem;
         }
 
         .search-icon {
             color: rgba(255, 255, 255, 0.7);
-            font-size: 0.8rem; /* Reduced font size */
+            font-size: 0.8rem;
             transition: color 0.3s ease;
         }
 
@@ -123,7 +123,7 @@
             background: var(--glass);
             border: 1px solid var(--glass-border);
             border-radius: 50%;
-            width: 28px; /* Reduced size */
+            width: 28px;
             height: 28px;
             display: flex;
             align-items: center;
@@ -131,7 +131,7 @@
             color: var(--text);
             text-decoration: none;
             transition: all 0.3s ease;
-            font-size: 0.75rem; /* Reduced font size */
+            font-size: 0.75rem;
             position: relative;
         }
 
@@ -142,23 +142,23 @@
 
         .cart-badge {
             position: absolute;
-            top: -3px; /* Adjusted position */
+            top: -3px;
             right: -3px;
             background: var(--accent);
             color: white;
             border-radius: 50%;
-            width: 14px; /* Reduced size */
+            width: 14px;
             height: 14px;
-            font-size: 0.6rem; /* Reduced font size */
+            font-size: 0.6rem;
             display: none;
             align-items: center;
             justify-content: center;
             font-weight: 600;
         }
 
-        /* Main Content - Adjusted for smaller header */
+        /* Main Content - Adjusted for header height */
         .main-content {
-            margin-top: 44px; /* Adjusted for smaller header */
+            margin-top: 50px; /* UPDATED: Adjusted for 50px header */
             padding: 1rem;
             background: var(--primary);
             min-height: calc(100vh - 150px);
@@ -195,10 +195,10 @@
             line-height: 1.5;
         }
 
-        /* Success Message - Adjusted for smaller header */
+        /* Success Message - Adjusted for header height */
         .success-message {
             position: fixed;
-            top: 54px; /* Adjusted for smaller header */
+            top: 60px; /* UPDATED: Adjusted for 50px header */
             right: 2rem;
             background: var(--success);
             color: white;
@@ -316,36 +316,36 @@
             text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
         }
 
-        /* Responsive Design */
+        /* Responsive Design - UPDATED MOBILE HEADER */
         @media (max-width: 768px) {
-            /* Mobile Header - Compact */
+            /* Mobile Header - UPDATED DIMENSIONS */
             .top-header {
-                padding: 0.25rem 1rem; /* Further reduced padding */
-                height: 40px; /* Smaller height on mobile */
+                padding: 0.5rem 1rem; /* UPDATED: Vertical 0.5rem, Horizontal 1rem */
+                height: 45px; /* UPDATED: Height 45px */
             }
 
             .logo {
-                font-size: 1.3rem; /* Further reduced for mobile */
+                font-size: 1.3rem;
             }
 
             .main-content {
-                margin-top: 40px; /* Adjusted for smaller header */
+                margin-top: 45px; /* UPDATED: Adjusted for 45px header */
                 padding: 0.8rem;
             }
 
             .search-bar {
-                width: 3.2cm; /* Reduced width for mobile */
+                width: 3.2cm;
                 min-width: 3.2cm;
-                height: 26px; /* Further reduced for mobile */
-                padding: 0.15rem 0.7rem; /* Reduced padding */
+                height: 26px;
+                padding: 0.15rem 0.7rem;
             }
 
             .search-bar input, .search-bar input::placeholder {
-                font-size: 0.75rem; /* Smaller font on mobile */
+                font-size: 0.75rem;
             }
 
             .search-icon {
-                font-size: 0.75rem; /* Smaller icon on mobile */
+                font-size: 0.75rem;
             }
 
             .empty-state {
@@ -375,12 +375,12 @@
             .nav-icon { font-size: 1.3rem; height: 22px; }
             .nav-label { font-size: 0.65rem; }
             .icon-btn {
-                width: 26px; /* Further reduced for mobile */
+                width: 26px;
                 height: 26px;
-                font-size: 0.7rem; /* Smaller icons */
+                font-size: 0.7rem;
             }
             .success-message {
-                top: 50px; /* Adjusted for smaller header */
+                top: 55px; /* UPDATED: Adjusted for 45px header */
                 right: 1rem;
                 left: 1rem;
                 text-align: center;
@@ -403,8 +403,8 @@
             .nav-label { font-size: 0.6rem; }
             
             .top-header {
-                padding: 0.2rem 0.8rem;
-                height: 38px;
+                padding: 0.5rem 0.8rem; /* UPDATED: Maintained vertical padding */
+                height: 45px; /* UPDATED: Maintained height */
             }
             
             .logo {
@@ -429,7 +429,7 @@
 
         @media (min-width: 1200px) {
             .search-bar {
-                width: 4.5cm; /* Slightly reduced for desktop */
+                width: 4.5cm;
                 min-width: 4.5cm;
             }
         }
@@ -447,7 +447,7 @@
     </style>
 </head>
 <body>
-    <!-- Compact Top Header -->
+    <!-- Compact Top Header with Updated Dimensions -->
     <header class="top-header">
         <a href="index.html" class="logo">store<span class="logo-dot">.</span>in</a>
         <div class="header-icons">
