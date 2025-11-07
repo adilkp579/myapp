@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Profile — store.in</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#000;--card:#0b0b0b;--muted:#9aa0a6;--accent:linear-gradient(90deg,#7c5cff,#00d4ff);}    
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;padding:0;
+      font-family:Inter,system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial;
+      background:var(--bg);
+      color:#fff;
+      display:flex;align-items:center;justify-content:center;
+      padding:24px;
+    }
+    .container{width:100%;max-width:420px;}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.04);border-radius:16px;padding:18px;backdrop-filter:blur(6px);box-shadow:0 6px 24px rgba(0,0,0,0.6);}
+    .header{display:flex;align-items:center;gap:12px}
+    .avatar{width:64px;height:64px;border-radius:12px;flex:0 0 64px;background:linear-gradient(135deg,#222,#111);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:20px;color:#fff;border:1px solid rgba(255,255,255,0.06)}
+    .meta{flex:1}
+    .meta h1{margin:0;font-size:18px;font-weight:700}
+    .meta p{margin:2px 0 0;color:var(--muted);font-size:13px}
+    .logout{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted);padding:8px 10px;border-radius:10px;font-size:13px;cursor:pointer}
+
+    .menu{margin-top:18px;display:flex;flex-direction:column;gap:12px}
+    .menu-item{display:flex;align-items:center;gap:14px;padding:14px;border-radius:12px;cursor:pointer;background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);border:1px solid rgba(255,255,255,0.03);transition:transform .16s ease,box-shadow .16s ease;}
+    .menu-item:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,0.6)}
+    .menu-icon{width:44px;height:44px;border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));display:flex;align-items:center;justify-content:center}
+    .menu-title{flex:1}
+    .menu-title h3{margin:0;font-size:15px;font-weight:600}
+    .menu-title p{margin:4px 0 0;color:var(--muted);font-size:12px}
+    .chev{opacity:0.6}
+
+    /* Edit form */
+    .edit-form{display:none;flex-direction:column;gap:12px;margin-top:20px}
+    .edit-form input{padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);background:#111;color:#fff}
+    .edit-form button{padding:10px;border:none;border-radius:8px;background:var(--accent);color:#000;font-weight:600;cursor:pointer}
+
+    /* Login overlay */
+    .overlay{position:fixed;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.6),rgba(0,0,0,0.8));display:flex;align-items:center;justify-content:center;padding:24px}
+    .login-card{width:100%;max-width:420px;background:linear-gradient(180deg,#0f0f10,#070707);border-radius:14px;padding:20px;border:1px solid rgba(255,255,255,0.04)}
+    .login-card h2{margin:0 0 8px}
+    .login-card p{margin:0 0 18px;color:var(--muted)}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;border:0;cursor:pointer;font-weight:600}
+    .btn-primary{background:var(--accent);background-clip:padding-box;color:#000}
+    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+    .small{font-size:13px;color:var(--muted);margin-top:12px;text-align:center}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card" id="profileCard">
+      <div class="header">
+        <div class="avatar" id="avatar">A</div>
+        <div class="meta">
+          <h1 id="displayName">Guest</h1>
+          <p id="email">Not logged in</p>
+        </div>
+        <div>
+          <button class="logout" id="logoutBtn">Log out</button>
+        </div>
+      </div>
+
+      <div class="menu" id="menu">
+        <div class="menu-item" data-action="edit">
+          <div class="menu-icon">✏️</div>
+          <div class="menu-title"><h3>Edit Profile</h3><p>Update name, email and password</p></div>
+          <div class="chev">›</div>
+        </div>
+        <div class="menu-item" data-action="coupons">
+          <div class="menu-icon">🏷️</div>
+          <div class="menu-title"><h3>Coupons</h3><p>Your available discounts</p></div>
+          <div class="chev">›</div>
+        </div>
+        <div class="menu-item" data-action="orders">
+          <div class="menu-icon">📦</div>
+          <div class="menu-title"><h3>Orders</h3><p>Track your purchases</p></div>
+          <div class="chev">›</div>
+        </div>
+        <div class="menu-item" data-action="help">
+          <div class="menu-icon">❓</div>
+          <div class="menu-title"><h3>Help Center</h3><p>Support and FAQs</p></div>
+          <div class="chev">›</div>
+        </div>
+        <div class="menu-item" data-action="sell">
+          <div class="menu-icon">🏪</div>
+          <div class="menu-title"><h3>Sell on store.in</h3><p>Start selling your products</p></div>
+          <div class="chev">›</div>
+        </div>
+      </div>
+
+      <form class="edit-form" id="editForm">
+        <input type="text" id="editName" placeholder="Enter new name" />
+        <input type="email" id="editEmail" placeholder="Enter new email" />
+        <input type="password" id="editPassword" placeholder="Enter new password" />
+        <button type="submit">Save Changes</button>
+      </form>
+    </div>
+    <p class="small">Tip: This page simulates login locally. Click "Login" if you aren't logged in.</p>
+  </div>
+
+  <div id="loginOverlay" class="overlay" style="display:none">
+    <div class="login-card">
+      <h2>Sign in to store.in</h2>
+      <p>To open your profile you must be logged in.</p>
+      <div style="display:flex;gap:10px">
+        <button class="btn btn-primary" id="loginBtn">Login</button>
+        <button class="btn btn-ghost" id="continueGuest">Continue as Guest</button>
+      </div>
+      <p class="small">After login the profile content becomes accessible.</p>
+    </div>
+  </div>
+
+  <script>
+    const isLoggedIn = () => localStorage.getItem('storein_logged') === '1';
+    const setLoggedIn = (v) => localStorage.setItem('storein_logged', v ? '1' : '0');
+
+    const overlay = document.getElementById('loginOverlay');
+    const logoutBtn = document.getElementById('logoutBtn');
+    const loginBtn = document.getElementById('loginBtn');
+    const continueGuest = document.getElementById('continueGuest');
+    const displayName = document.getElementById('displayName');
+    const email = document.getElementById('email');
+    const avatar = document.getElementById('avatar');
+    const editForm = document.getElementById('editForm');
+    const editName = document.getElementById('editName');
+    const editEmail = document.getElementById('editEmail');
+    const editPassword = document.getElementById('editPassword');
+
+    function applyProfile() {
+      if(isLoggedIn()){
+        const name = localStorage.getItem('storein_name') || 'Adil';
+        const mail = localStorage.getItem('storein_email') || 'adil@example.com';
+        displayName.textContent = name;
+        email.textContent = mail;
+        avatar.textContent = name.split(' ').map(s=>s[0]).slice(0,2).join('').toUpperCase();
+        overlay.style.display = 'none';
+        logoutBtn.style.display = 'inline-block';
+      } else {
+        displayName.textContent = 'Guest';
+        email.textContent = 'Not logged in';
+        avatar.textContent = 'G';
+        overlay.style.display = '';
+        logoutBtn.style.display = 'none';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded',()=>{
+      applyProfile();
+      document.getElementById('menu').addEventListener('click', e => {
+        const item = e.target.closest('.menu-item');
+        if(!item) return;
+        const action = item.dataset.action;
+        if(!isLoggedIn()){
+          overlay.style.display = '';
+          return;
+        }
+        if(action === 'edit') {
+          editForm.style.display = editForm.style.display === 'flex' ? 'none' : 'flex';
+          editName.value = localStorage.getItem('storein_name') || '';
+          editEmail.value = localStorage.getItem('storein_email') || '';
+        } else {
+          alert(`Open ${action} (simulate)`);
+        }
+      });
+
+      editForm.addEventListener('submit', e => {
+        e.preventDefault();
+        const newName = editName.value.trim();
+        const newEmail = editEmail.value.trim();
+        if(newName) localStorage.setItem('storein_name', newName);
+        if(newEmail) localStorage.setItem('storein_email', newEmail);
+        if(editPassword.value.trim()) {
+          localStorage.setItem('storein_password', editPassword.value.trim());
+        }
+        alert('Profile updated!');
+        editForm.style.display = 'none';
+        applyProfile();
+      });
+
+      loginBtn.addEventListener('click', ()=>{
+        localStorage.setItem('storein_name','Adil KP');
+        localStorage.setItem('storein_email','adil@example.com');
+        setLoggedIn(true);
+        applyProfile();
+      });
+
+      continueGuest.addEventListener('click', ()=> overlay.style.display = 'none');
+
+      logoutBtn.addEventListener('click', ()=> {
+        setLoggedIn(false);
+        applyProfile();
+      });
+    });
+  </script>
+</body>
+</html>

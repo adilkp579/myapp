@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Search</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: #0d0d0d;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 25px;
+      text-align: center;
+      color: #00e1ff;
+    }
+
+    .search-container {
+      background: #1a1a1a;
+      border-radius: 15px;
+      padding: 25px;
+      width: 100%;
+      max-width: 700px;
+      box-shadow: 0 0 20px rgba(0, 225, 255, 0.2);
+    }
+
+    .search-box {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .search-box input {
+      flex: 1;
+      padding: 12px 15px;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      outline: none;
+      background: #262626;
+      color: white;
+    }
+
+    .search-box button {
+      background: #00e1ff;
+      border: none;
+      color: #000;
+      padding: 12px 18px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .search-box button:hover {
+      background: #00bcd4;
+    }
+
+    .filters {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .filters select, .filters input[type="date"] {
+      flex: 1;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      background: #262626;
+      color: white;
+      font-size: 14px;
+    }
+
+    .results {
+      background: #141414;
+      border-radius: 10px;
+      padding: 15px;
+    }
+
+    .result-item {
+      border-bottom: 1px solid #333;
+      padding: 10px 0;
+    }
+
+    .result-item:last-child {
+      border-bottom: none;
+    }
+
+    .result-item h3 {
+      color: #00e1ff;
+    }
+
+    .result-item p {
+      color: #bbb;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🔎 Advanced Search Page</h1>
+
+  <div class="search-container">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Type to search...">
+      <button onclick="performSearch()">Search</button>
+    </div>
+
+    <div class="filters">
+      <select id="category">
+        <option value="">All Categories</option>
+        <option value="technology">Technology</option>
+        <option value="science">Science</option>
+        <option value="health">Health</option>
+        <option value="sports">Sports</option>
+      </select>
+
+      <input type="date" id="fromDate">
+      <input type="date" id="toDate">
+    </div>
+
+    <div class="results" id="results">
+      <!-- Search results will appear here -->
+    </div>
+  </div>
+
+  <script>
+    const data = [
+      { title: "AI Revolution", category: "technology", date: "2025-01-10", description: "The rise of artificial intelligence in every industry." },
+      { title: "Space Discovery", category: "science", date: "2025-02-14", description: "New exoplanet found in nearby galaxy." },
+      { title: "Health Tips 2025", category: "health", date: "2025-05-01", description: "Top tips for a healthier lifestyle." },
+      { title: "Football World Cup", category: "sports", date: "2025-07-22", description: "The most awaited tournament of the year." },
+      { title: "Cybersecurity Trends", category: "technology", date: "2025-03-11", description: "Protect your data with modern techniques." }
+    ];
+
+    function performSearch() {
+      const query = document.getElementById('searchInput').value.toLowerCase();
+      const category = document.getElementById('category').value;
+      const fromDate = document.getElementById('fromDate').value;
+      const toDate = document.getElementById('toDate').value;
+
+      const results = data.filter(item => {
+        const matchesQuery = item.title.toLowerCase().includes(query) || item.description.toLowerCase().includes(query);
+        const matchesCategory = category ? item.category === category : true;
+        const matchesDate = (!fromDate || item.date >= fromDate) && (!toDate || item.date <= toDate);
+        return matchesQuery && matchesCategory && matchesDate;
+      });
+
+      displayResults(results);
+    }
+
+    function displayResults(results) {
+      const container = document.getElementById('results');
+      container.innerHTML = "";
+      if (results.length === 0) {
+        container.innerHTML = "<p>No results found.</p>";
+        return;
+      }
+
+      results.forEach(r => {
+        container.innerHTML += `
+          <div class="result-item">
+            <h3>${r.title}</h3>
+            <p>${r.description}</p>
+            <small>Category: ${r.category} | Date: ${r.date}</small>
+          </div>
+        `;
+      });
+    }
+  </script>
+</body>
+</html>

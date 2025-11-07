@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>store.in</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        :root {
+            --primary: #000000;
+            --secondary: #1a1a1a;
+            --accent: #e74c3c;
+            --text: #ffffff;
+            --glass: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --success: #2ed573;
+            --gold: #d4af37;
+        }
+
+        body {
+            background: var(--primary);
+            color: var(--text);
+            min-height: 100vh;
+            padding-bottom: 100px;
+            overflow-x: hidden;
+        }
+
+        /* COMPACT Top Header */
+        .top-header {
+            background: var(--primary);
+            padding: 0.3rem 1.2rem; /* Reduced padding */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--glass-border);
+            height: 44px; /* Reduced height */
+        }
+
+        .logo {
+            font-size: 1.4rem; /* Reduced from 1.6rem */
+            font-weight: 800;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .logo-dot {
+            color: var(--accent);
+        }
+
+        .header-icons {
+            display: flex;
+            gap: 0.6rem; /* Reduced gap */
+            align-items: center;
+        }
+
+        /* Search Bar - Compact with Click Navigation */
+        .search-bar {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px; /* Slightly smaller radius */
+            padding: 0.2rem 0.8rem; /* Reduced padding */
+            display: flex;
+            align-items: center;
+            gap: 0.4rem; /* Reduced gap */
+            width: 4cm; /* Reduced width */
+            min-width: 4cm;
+            height: 28px; /* Reduced height */
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .search-bar:hover {
+            border-color: var(--accent);
+            transform: scale(1.02);
+            box-shadow: 0 0 15px rgba(231, 76, 60, 0.3);
+        }
+
+        .search-bar:active {
+            transform: scale(0.98);
+        }
+
+        .search-bar input {
+            background: transparent;
+            border: none;
+            color: var(--text);
+            font-size: 0.8rem; /* Reduced font size */
+            width: 100%;
+            outline: none;
+            padding: 0;
+            cursor: pointer;
+        }
+
+        .search-bar input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.8rem; /* Reduced font size */
+        }
+
+        .search-icon {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.8rem; /* Reduced font size */
+            transition: color 0.3s ease;
+        }
+
+        .search-bar:hover .search-icon {
+            color: var(--accent);
+        }
+
+        /* Icon Buttons - Compact */
+        .icon-btn {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 50%;
+            width: 28px; /* Reduced size */
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.75rem; /* Reduced font size */
+            position: relative;
+        }
+
+        .icon-btn:hover {
+            background: var(--accent);
+            transform: scale(1.1);
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -3px; /* Adjusted position */
+            right: -3px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            width: 14px; /* Reduced size */
+            height: 14px;
+            font-size: 0.6rem; /* Reduced font size */
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+
+        /* Main Content - Adjusted for smaller header */
+        .main-content {
+            margin-top: 44px; /* Adjusted for smaller header */
+            padding: 1rem;
+            background: var(--primary);
+            min-height: calc(100vh - 150px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 3rem 2rem;
+            max-width: 500px;
+        }
+
+        .empty-icon {
+            font-size: 4rem;
+            color: var(--glass-border);
+            margin-bottom: 1.5rem;
+            opacity: 0.5;
+        }
+
+        .empty-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text);
+            opacity: 0.7;
+        }
+
+        .empty-subtitle {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.5);
+            line-height: 1.5;
+        }
+
+        /* Success Message - Adjusted for smaller header */
+        .success-message {
+            position: fixed;
+            top: 54px; /* Adjusted for smaller header */
+            right: 2rem;
+            background: var(--success);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(46, 213, 115, 0.4);
+            display: none;
+            z-index: 1001;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* Floating Navigation */
+        .floating-nav {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 92%;
+            max-width: 500px;
+            height: 75px;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(30px) saturate(200%);
+            -webkit-backdrop-filter: blur(30px) saturate(200%);
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 0 15px;
+            z-index: 1000;
+            box-shadow: 
+                0 12px 40px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .floating-nav:hover {
+            background: rgba(255, 255, 255, 0.16);
+            box-shadow: 
+                0 16px 50px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.25);
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: var(--text);
+            transition: all 0.3s ease;
+            padding: 10px 12px;
+            border-radius: 18px;
+            position: relative;
+            flex: 1;
+            max-width: 70px;
+            height: 60px;
+        }
+
+        .nav-item.active {
+            color: var(--accent);
+            transform: translateY(-8px);
+        }
+
+        .nav-item.active .nav-icon {
+            transform: scale(1.2);
+            filter: drop-shadow(0 0 10px rgba(231, 76, 60, 0.5));
+        }
+
+        .nav-item.active .nav-label {
+            color: var(--accent);
+            font-weight: 700;
+            transform: translateY(2px);
+        }
+
+        .nav-item:hover {
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .nav-icon {
+            font-size: 1.4rem;
+            margin-bottom: 4px;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 24px;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+        }
+
+        .nav-label {
+            font-size: 0.68rem;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+            letter-spacing: 0.4px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            /* Mobile Header - Compact */
+            .top-header {
+                padding: 0.25rem 1rem; /* Further reduced padding */
+                height: 40px; /* Smaller height on mobile */
+            }
+
+            .logo {
+                font-size: 1.3rem; /* Further reduced for mobile */
+            }
+
+            .main-content {
+                margin-top: 40px; /* Adjusted for smaller header */
+                padding: 0.8rem;
+            }
+
+            .search-bar {
+                width: 3.2cm; /* Reduced width for mobile */
+                min-width: 3.2cm;
+                height: 26px; /* Further reduced for mobile */
+                padding: 0.15rem 0.7rem; /* Reduced padding */
+            }
+
+            .search-bar input, .search-bar input::placeholder {
+                font-size: 0.75rem; /* Smaller font on mobile */
+            }
+
+            .search-icon {
+                font-size: 0.75rem; /* Smaller icon on mobile */
+            }
+
+            .empty-state {
+                padding: 2rem 1rem;
+            }
+
+            .empty-icon {
+                font-size: 3rem;
+            }
+
+            .empty-title {
+                font-size: 1.5rem;
+            }
+
+            .floating-nav { 
+                height: 70px; 
+                bottom: 15px; 
+                width: 94%;
+                max-width: 440px;
+                padding: 0 12px;
+            }
+            .nav-item { 
+                width: 60px; 
+                height: 55px; 
+                padding: 8px 10px;
+            }
+            .nav-icon { font-size: 1.3rem; height: 22px; }
+            .nav-label { font-size: 0.65rem; }
+            .icon-btn {
+                width: 26px; /* Further reduced for mobile */
+                height: 26px;
+                font-size: 0.7rem; /* Smaller icons */
+            }
+            .success-message {
+                top: 50px; /* Adjusted for smaller header */
+                right: 1rem;
+                left: 1rem;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .floating-nav {
+                height: 65px;
+                border-radius: 22px;
+                padding: 0 10px;
+                max-width: 400px;
+            }
+            .nav-item {
+                width: 55px;
+                height: 50px;
+                padding: 7px 8px;
+            }
+            .nav-icon { font-size: 1.2rem; height: 20px; }
+            .nav-label { font-size: 0.6rem; }
+            
+            .top-header {
+                padding: 0.2rem 0.8rem;
+                height: 38px;
+            }
+            
+            .logo {
+                font-size: 1.2rem;
+            }
+            
+            .search-bar {
+                width: 2.8cm;
+                min-width: 2.8cm;
+                height: 24px;
+                padding: 0.1rem 0.6rem;
+            }
+
+            .empty-icon {
+                font-size: 2.5rem;
+            }
+
+            .empty-title {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .search-bar {
+                width: 4.5cm; /* Slightly reduced for desktop */
+                min-width: 4.5cm;
+            }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--primary);
+        }
+
+        html {
+            background: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <!-- Compact Top Header -->
+    <header class="top-header">
+        <a href="index.html" class="logo">store<span class="logo-dot">.</span>in</a>
+        <div class="header-icons">
+            <!-- Search Bar with Navigation -->
+            <div class="search-bar" id="searchBar">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" id="searchInput" placeholder="Search for brands, products..." readonly>
+            </div>
+            <a href="/store.in/bag/cart.html" class="icon-btn">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="cart-badge" id="cartBadge">0</span>
+            </a>
+            <a href="/store.in/profile/profile.html" class="icon-btn">
+                <i class="fas fa-user"></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- Success Message -->
+    <div class="success-message" id="successMessage">
+        <i class="fas fa-check-circle"></i> <span id="messageText">Product added to cart!</span>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="main-content">
+            <!-- Empty State -->
+            <div class="empty-state">
+                <div class="empty-icon">
+                    <i class="fas fa-store"></i>
+                </div>
+                <h2 class="empty-title">Welcome to Store.in</h2>
+                <p class="empty-subtitle">Select a category from the navigation below to start shopping</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Updated Floating Navigation with New Icons -->
+    <nav class="floating-nav">
+        <a href="/store.in/men/men.html" class="nav-item">
+            <i class="fas fa-home nav-icon"></i>  
+            <span class="nav-label">Home</span>
+        </a>
+        <a href="/store.in/fashion/fashion.html" class="nav-item">
+            <i class="fas fa-vest nav-icon"></i>
+            <span class="nav-label">Fashion</span>
+        </a>
+        <a href="/store.in/kid/kids.html" class="nav-item">
+            <i class="fas fa-laptop nav-icon"></i>
+            <span class="nav-label">Electronics</span>
+        </a>
+        <a href="/store.in/track/track.html" class="nav-item active">
+            <i class="fas fa-couch nav-icon"></i>
+            <span class="nav-label">Furniture</span>
+        </a>
+        <a href="/store.in/appliances/appliances.html" class="nav-item">
+            <i class="fas fa-blender nav-icon"></i>
+            <span class="nav-label">Appliances</span>
+        </a>
+    </nav>
+
+    <script>
+        // Search Bar Navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchBar = document.getElementById('searchBar');
+            const searchInput = document.getElementById('searchInput');
+            
+            // Add click event to search bar to navigate to search page
+            searchBar.addEventListener('click', function() {
+                window.location.href = '/store.in/searchbar/search.html';
+            });
+            
+            // Also allow clicking on the input field
+            searchInput.addEventListener('click', function(e) {
+                e.stopPropagation(); // Prevent triggering the parent click event twice
+                window.location.href = '/store.in/searchbar/search.html';
+            });
+            
+            // Optional: Add keyboard navigation (Enter key)
+            searchInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    window.location.href = '/store.in/searchbar/search.html';
+                }
+            });
+        });
+
+        // Update cart badge
+        function updateCartBadge() {
+            try {
+                const cart = JSON.parse(localStorage.getItem('storeCart')) || [];
+                const cartBadge = document.getElementById('cartBadge');
+                const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+                
+                if (totalItems > 0) {
+                    cartBadge.textContent = totalItems > 9 ? '9+' : totalItems;
+                    cartBadge.style.display = 'flex';
+                } else {
+                    cartBadge.style.display = 'none';
+                }
+            } catch (error) {
+                console.error('Error updating cart badge:', error);
+            }
+        }
+
+        // Show success message
+        function showSuccessMessage(message) {
+            const successMsg = document.getElementById('successMessage');
+            const messageText = document.getElementById('messageText');
+            messageText.textContent = message;
+            successMsg.style.display = 'block';
+            
+            setTimeout(() => {
+                successMsg.style.display = 'none';
+            }, 3000);
+        }
+
+        // Enhanced navigation functionality
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                if (!this.classList.contains('active')) {
+                    e.preventDefault();
+                    document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Smooth navigation
+                    setTimeout(() => {
+                        window.location.href = this.getAttribute('href');
+                    }, 300);
+                }
+            });
+        });
+
+        // Set active nav based on current page
+        function setActiveNav() {
+            const current = window.location.pathname.split('/').pop() || 'newpage.html';
+            document.querySelectorAll('.nav-item').forEach(nav => {
+                nav.classList.remove('active');
+                if (nav.getAttribute('href') === current || (current === 'newpage.html' && nav.getAttribute('href').includes('track'))) {
+                    nav.classList.add('active');
+                }
+            });
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            setActiveNav();
+            updateCartBadge();
+        });
+    </script>
+</body>
+</html>
