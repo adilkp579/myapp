@@ -517,19 +517,19 @@
             
             // Add click event to search bar to navigate to search page
             searchBar.addEventListener('click', function() {
-                window.location.href = '/store.in/searchbar/search.html';
+                window.location.href = 'store.in/searchbar/search.html';
             });
             
             // Also allow clicking on the input field
             searchInput.addEventListener('click', function(e) {
                 e.stopPropagation(); // Prevent triggering the parent click event twice
-                window.location.href = '/store.in/searchbar/search.html';
+                window.location.href = 'store.in/searchbar/search.html';
             });
             
             // Optional: Add keyboard navigation (Enter key)
             searchInput.addEventListener('keydown', function(e) {
                 if (e.key === 'Enter') {
-                    window.location.href = '/store.in/searchbar/search.html';
+                    window.location.href = 'store.in/searchbar/search.html';
                 }
             });
         });
